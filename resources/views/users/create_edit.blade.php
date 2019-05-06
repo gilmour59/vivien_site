@@ -3,13 +3,19 @@
 @section('content')
     <div class="card card-default">
         <div class="card-header">
-            Profile
+            @isset($user)
+                Edit User
+            @else
+                Create User
+            @endisset
         </div>
         <div class="card-body">
             @include('includes.validation_errors')
-            <form action="{{ route('users.update-profile') }}" method="POST">
+            <form action="{{ isset($user) ? route('users.update', $user->id) : route('users.store') }}" method="POST">
                 @csrf
-                @method('PUT')
+                @isset($tag)
+                    @method('PUT')
+                @endisset
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name') ? old('name') : (isset($user) ? $user->name : "") }}">

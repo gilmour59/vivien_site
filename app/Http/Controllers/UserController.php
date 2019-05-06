@@ -5,11 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\Users\UpdateUserRequest;
+use App\Http\Requests\Users\CreateUserRequest;
 
 class UserController extends Controller
 {
     public function index(){
         return view('users.index')->with('users', User::all());
+    }
+
+    public function create(){
+        return view('users.create_edit');
+    }
+
+    public function store(CreateUserRequest $request){
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'about' => $request->about
+        ]);
+
+        session()->flash('success', 'User successfully added!');
+
+        return redirect(route('users.index'));
     }
 
     public function profile(){
