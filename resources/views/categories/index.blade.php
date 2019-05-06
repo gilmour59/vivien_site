@@ -14,17 +14,18 @@
                     <thead>
                         <th>Name</th>
                         <th>Post Count</th>
+                        <th></th>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
                             <tr>
-                                <td>
+                                <td width="30%">
                                     {{ $category->name }}
                                 </td>
-                                <td>
+                                <td width="20%">
                                     {{ $category->posts->count() }}
                                 </td>
-                                <td>
+                                <td width="20%">
                                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm mr-3">Edit</a>
                                     <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $category->id }})">Delete</button>
                                 </td>

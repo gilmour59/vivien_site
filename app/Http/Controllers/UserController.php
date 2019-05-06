@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\Users\UpdateUserRequest;
 use App\Http\Requests\Users\CreateUserRequest;
+use App\Http\Requests\Users\UpdateProfileRequest;
 
 class UserController extends Controller
 {
@@ -30,11 +31,41 @@ class UserController extends Controller
         return redirect(route('users.index'));
     }
 
+    public function edit(User $user){
+        return view('users.create_edit')->with('user', $user);
+    }
+
+    public function update(UpdateUserRequest $request, User $user){
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'about' => $request->about
+        ]);
+
+        session()->flash('success', 'User Updated!');
+
+        return redirect()->route('users.index');
+    }
+
+    public function destroy(User $user){
+        if ($user->id === 1){
+            session()->flash('error', 'THIS USER CANNOT BE DELETED!');
+
+            return redirect()->route('users.index');
+        }else{
+            $user->delete();
+
+            session()->flash('success', 'User was successfully Deleted!');
+
+            return redirect(route('users.index'));
+        }
+    }
+
     public function profile(){
         return view('users.profile')->with('user', auth()->user());
     }
-
-    public function update(UpdateUserRequest $request){
+    
+    public function updateProfile(UpdateProfileRequest $request){
         $user = auth()->user();
 
         $user->update([
@@ -46,21 +77,5 @@ class UserController extends Controller
         session()->flash('success', 'Profile Updated!');
 
         return redirect()->back();
-    }
-
-    public function makeAdmin(User $user){
-
-        if ($user->role === 'admin') {
-            session()->flash('error', $user->name . ' is already Admin!');
-
-            return redirect()->route('users.index');
-        }else{
-            $user->role = 'admin';
-            $user->save();
-
-            session()->flash('success', $user->name . ' is now Admin!');
-
-            return redirect()->route('users.index');
-        }
     }
 }

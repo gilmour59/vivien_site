@@ -13,6 +13,9 @@
             @include('includes.validation_errors')
             <form action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @isset($post)
+                    @method('PUT')
+                @endisset
                 <div class="form-group">
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="title" class="form-control" value="{{ old('title') ? old('title') : (isset($post) ? $post->title : "") }}">
@@ -75,10 +78,7 @@
                 @endif
                 <div class="form-group">
                     <input type="submit" value="Enter" class="btn btn-primary float-right">
-                </div>
-                    @isset($post)
-                        @method('PUT')
-                    @endisset
+                </div>                    
             </form>
         </div>
     </div>

@@ -27,13 +27,8 @@
                                     {{ $user->about }}
                                 </td>
                                 <td width="10%">
-                                    @if (!$user->isAdmin())
-                                        <form action="{{ route('users.make-admin', $user->id) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-success btn-sm">Make Admin</button>
-                                        </form>
-                                    @endif
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm mr-3">Edit</a>
+                                    <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $user->id }})">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -42,6 +37,42 @@
             @else
                 <h5 class="text-center">No Users Yet!</h5>
             @endif
+            <form action="" method="POST" id="deleteUserForm">
+                @csrf
+                @method('DELETE')
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="font-weight-bold">
+                                    Are you sure you want to delete this User?
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Go Back!</button>
+                                <button type="submit" class="btn btn-danger">Delete!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function handleDelete(id) {
+            $('#deleteModal').modal('show');
+            var form = document.getElementById('deleteUserForm');
+            form.action = "users/" + id;
+            console.log(id, form);
+        }
+    </script>
 @endsection

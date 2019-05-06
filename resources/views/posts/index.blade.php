@@ -24,16 +24,16 @@
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
-                                <td>
+                                <td width="20%">
                                     <img src="{{ asset('storage/' . $post->image) }}" alt=" {{ $post->title }}" width="40" height="40">
                                 </td>
-                                <td>
+                                <td width="30%">
                                     {{ $post->title }}
                                 </td>
-                                <td>
+                                <td width="20%">
                                     {{ $post->category->name }}
                                 </td>
-                                <td>
+                                <td width="20%">
                                     @if ($post->trashed())
                                         <form action="{{ route('posts.restore', $post->id) }}" method="POST" id="restoreForm">
                                             @csrf
