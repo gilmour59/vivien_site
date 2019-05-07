@@ -14,6 +14,10 @@ class UserController extends Controller
         return view('users.index')->with('users', User::all());
     }
 
+    public function show(){
+        //
+    }
+
     public function create(){
         return view('users.create_edit');
     }

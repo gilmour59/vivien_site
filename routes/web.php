@@ -31,9 +31,10 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::resource('users', 'UserController');
-
+    //define these routes before your call to Route::resource ; otherwise, the routes defined by the resource method may unintentionally take precedence over the supplemental routes
     Route::get('users/profile', 'UserController@profile')->name('users.profile');
     Route::put('users/profile', 'UserController@updateProfile')->name('users.update-profile');
+
+    Route::resource('users', 'UserController');
 });
 
