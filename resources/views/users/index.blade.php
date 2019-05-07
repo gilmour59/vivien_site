@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="d-flex justify-content-end mb-2">
+        <a href="{{ route('users.create') }}" class="btn btn-success">Add</a>
+    </div>
     <div class="card card-default">
         <div class="card-header">
             Users
@@ -26,7 +29,7 @@
                                 <td width="20%">
                                     {{ $user->about }}
                                 </td>
-                                <td width="10%">
+                                <td width="20%">
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm mr-3">Edit</a>
                                     <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $user->id }})">Delete</button>
                                 </td>

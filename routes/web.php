@@ -26,11 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('tags', 'TagController');
 });
 
-Route::prefix('admin')->group(function () {
-    //define these routes before your call to Route::resource ; otherwise, the routes defined by the resource method may unintentionally take precedence over the supplemental routes
-    Route::get('users/profile', 'UserController@profile')->name('users.profile');
-    Route::put('users/profile', 'UserController@updateProfile')->name('users.update-profile');
-    //resource should be called after
-    Route::resource('users', 'UserController');
-});
+//define these routes before your call to Route::resource ; otherwise, the routes defined by the resource method may unintentionally take precedence over the supplemental routes
+Route::get('users/profile', 'UserController@profile')->name('users.profile');
+Route::put('users/profile', 'UserController@updateProfile')->name('users.update-profile');
+//resource should be called after the supplementary routes of "users"
+Route::resource('admin/users', 'UserController');
 
