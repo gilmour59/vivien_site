@@ -29,7 +29,7 @@ class UpdateProfileRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->user()->id],
             'current_password' => [new currentPassword],
             'password' => ['string', 'min:8', 'confirmed'],
-            'about' => ['required'],
+            'about' => ['string'],
         ];
     }
 }

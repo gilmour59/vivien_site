@@ -7,6 +7,7 @@ use App\User;
 use App\Http\Requests\Users\UpdateUserRequest;
 use App\Http\Requests\Users\CreateUserRequest;
 use App\Http\Requests\Users\UpdateProfileRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,6 +27,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
             'about' => $request->about
         ]);
@@ -42,9 +44,16 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user){
         $user->update([
             'name' => $request->name,
-            'email' => $request->email,
-            'about' => $request->about
+            'email' => $request->email,          
+            'role' => $request->role,
+            'about' => $request->about,
         ]);
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+
+            $user->save();
+        }
 
         session()->flash('success', 'User Updated!');
 
@@ -77,6 +86,12 @@ class UserController extends Controller
             'email' => $request->email,
             'about' => $request->about
         ]);
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+
+            $user->save();
+        }
 
         session()->flash('success', 'Profile Updated!');
 
