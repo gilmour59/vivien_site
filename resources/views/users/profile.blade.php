@@ -23,6 +23,10 @@
                     <textarea name="about" id="about" cols="30" rows="5" class="form-control">{{ old('about') ? old('about') : (isset($user) ? $user->about : "") }}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="about">Current Password:</label>
+                    <input type="password" name="current_password" id="current_password" class="form-control">
+                </div>
+                <div class="form-group">
                     <input type="submit" value="Enter" class="btn btn-primary float-right">
                 </div>
             </form>

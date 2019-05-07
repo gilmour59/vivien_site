@@ -32,10 +32,10 @@
                     <div class="form-group">
                         <label for="role">Role:</label>
                         <select name="role" id="role" class="form-control">
-                            <option value="writer" {{ (old('role') === 'writer') ? "selected" : (isset($user) ? ($user->role === 'writer' ? "selected" : "") : "") }}>
+                            <option value="writer" {{ (old('role') === 'writer') ? "selected" : (old('role') ? "" : (isset($user) ? ($user->role === 'writer' ? "selected" : "") : "")) }}>
                                 Writer
                             </option>
-                            <option value="admin" {{ (old('role') === 'admin') ? "selected" : (isset($user) ? ($user->role === 'admin' ? "selected" : "") : "") }}>
+                            <option value="admin" {{ (old('role') === 'admin') ? "selected" : (old('role') ? "" : (isset($user) ? ($user->role === 'admin' ? "selected" : "") : "")) }}>
                                 Admin
                             </option>
                         </select>
