@@ -74,6 +74,9 @@
         function handleDelete(id) {
             $('#deleteModal').modal('show');
             var form = document.getElementById('deleteUserForm');
+            //apparently route::resource adds its parent directory when directing to the route's url;
+            //e.g. Route::resource('admin/users', 'UserController');
+            //just direct to "users/id". 
             form.action = "users/" + id;
             console.log(id, form);
         }
