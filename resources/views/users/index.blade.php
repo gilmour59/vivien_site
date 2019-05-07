@@ -31,7 +31,9 @@
                                 </td>
                                 <td width="20%">
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm mr-3">Edit</a>
-                                    <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $user->id }})">Delete</button>
+                                    @if (!($user->id === 1))
+                                        <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $user->id }})">Delete</button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
