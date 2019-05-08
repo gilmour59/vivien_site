@@ -7,6 +7,7 @@
 @section('header')
 <!-- Header -->
     <header class="header text-white h-fullscreen pb-80" style="background-image: url({{ asset('storage/' . $post->image) }});" data-overlay="5">
+        <canvas class="constellation" data-radius="0"></canvas>
         <div class="container text-center">
             <div class="row h-100">
                 <div class="col-lg-8 mx-auto align-self-center">

@@ -39,11 +39,19 @@
                 <span class="navbar-divider d-mobile-none"></span>
 
                 <ul class="nav nav-navbar">
-
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Facebook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">About</a>
+                    </li>
                 </ul>
             </section>
             @auth
-                <a class="btn btn-xs btn-round btn-primary" href="{{ route('home') }}">Edit Posts</a>
+                <a class="btn btn-xs btn-round btn-primary" href="{{ route('posts.index') }}">Control Panel</a>
             @endauth
 
         </div>

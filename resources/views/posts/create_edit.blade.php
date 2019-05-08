@@ -26,8 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Content:</label>
-                    <input id="content" type="hidden" name="content" value="{{ old('content') ? old('content') : (isset($post) ? $post->content : "") }}">
-                    <trix-editor input="content"></trix-editor>
+                    <textarea name="content" id="content">{{ old('content') ? old('content') : (isset($post) ? $post->content : "") }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="published_at">Published At:</label>
@@ -85,13 +84,21 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css"/>
 @endsection
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
+    <script>
+        $('#content').each(function () {
+            var editor = new Jodit(this, {
+                "toolbarAdaptive": false,
+                "buttons": "|,bold,strikethrough,underline,italic,|,undo,redo,|,ul,ol,|,align,outdent,indent,|,font,fontsize,brush,paragraph,|,image,video,table,link,|,hr,eraser,source,|,symbol,print,|"
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         flatpickr('#published_at',{
