@@ -111,6 +111,12 @@ class PostController extends Controller
             $post->tags()->sync($request->tags);
         }
 
+        if(!$post->tags->isEmpty()){
+            if(!$request->tags){
+                $post->tags()->detach();
+            }
+        }
+
         $post->update($data);
 
         session()->flash('success', 'Post Updated!');
@@ -138,6 +144,7 @@ class PostController extends Controller
         $post = Post::onlyTrashed()->where('id', $id)->firstOrFail();
 
         $post->deleteImage();
+        $post->tags()->detach();
         $post->forceDelete();
 
         session()->flash('success', 'Post successfully Deleted!');
