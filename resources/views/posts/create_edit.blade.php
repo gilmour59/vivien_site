@@ -28,17 +28,16 @@
                     <label for="content">Content:</label>
                     <textarea name="content" id="content" rows="10">{{ old('content') ? old('content') : (isset($post) ? $post->content : "") }}</textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-inline mb-3">
                     <label for="days">Days:</label>
-                    <input type="text" name="days" id="days" class="form-control" value="{{ old('days') ? old('days') : (isset($post) ? $post->days : "") }}">
-                </div>
-                <div class="form-group">
+                    <input type="number" style="width:60px" name="days" id="days" class="form-control mr-4 ml-2" value="{{ old('days') ? old('days') : (isset($post) ? $post->days : "") }}">
+
                     <label for="nights">Nights:</label>
-                    <input type="text" name="nights" id="nights" class="form-control" value="{{ old('nights') ? old('nights') : (isset($post) ? $post->nights : "") }}">
+                    <input type="number" style="width:60px" name="nights" id="nights" class="form-control mr-4 ml-2" value="{{ old('nights') ? old('nights') : (isset($post) ? $post->nights : "") }}">
                 </div>
                 <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="text" name="price" id="price" class="form-control" value="{{ old('price') ? old('price') : (isset($post) ? $post->price : "") }}">
+                    <label for="price">Price (Php):</label>
+                    <input type="number" style="width:100px" name="price" id="price" class="form-control" value="{{ old('price') ? old('price') : (isset($post) ? $post->price : "") }}">
                 </div>
                 @isset($post)
                     <div class="form-group">
