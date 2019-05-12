@@ -96,9 +96,9 @@
 
                             <h6 class="sidebar-title">Tags</h6>
                             <div class="gap-multiline-items-1">
-                                @foreach ($tags as $tag)
+                                {{-- @foreach ($tags as $tag)
                                     <a class="badge badge-secondary" href="#">{{ $tag->name }}</a>
-                                @endforeach
+                                @endforeach --}}
                             </div>
 
                             <hr>

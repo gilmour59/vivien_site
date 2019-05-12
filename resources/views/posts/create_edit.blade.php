@@ -83,7 +83,11 @@
         $('#content').each(function () {
             var editor = new Jodit(this, {
                 "toolbarAdaptive": false,
-                "buttons": "|,bold,strikethrough,underline,italic,|,undo,redo,|,ul,ol,|,align,outdent,indent,|,font,fontsize,brush,paragraph,|,image,video,table,link,|,hr,eraser,source,|,symbol,print,|"
+                "buttons": "|,bold,strikethrough,underline,italic,|,undo,redo,|,ul,ol,|,align,outdent,indent,|,font,fontsize,brush,paragraph,|,image,video,table,link,|,hr,eraser,source,|,symbol,print,|",
+                "uploader": {
+                    "insertImageAsBase64URI": true
+                },
+                "height": 500,
             });
         });
     </script>
