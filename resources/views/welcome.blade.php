@@ -1,118 +1,168 @@
 @extends('layouts.post')
 
-@section('title')
-    All Posts
-@endsection
-
-@section('header')
-    <!-- Header -->
-    <header class="header text-center text-white" style="background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-
-                    <h1>Latest Posts</h1>
-                    <p class="lead-2 opacity-90 mt-6">Read and get updated on how we progress</p>
-
-                </div>
+@section('banner')
+    <section class="about-banner relative" style="background: url({{ asset('img/top-banner.jpg') }}) center;">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">				
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Home				
+                    </h1>	
+                </div>	
             </div>
-
         </div>
-    </header><!-- /.header -->
+    </section>
 @endsection
 
 @section('content')
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="section bg-gray">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-8 col-xl-9">
-                        <div class="row gap-y">
-                            @foreach ($posts as $post)
-                                <div class="col-md-6">
-                                    <div class="card border hover-shadow-6 mb-6 d-block">
-                                        <a href="{{ route('posts.show', $post->id) }}"><img class="card-img-top" src="{{ asset('storage/' . $post->image) }}" alt="Card image cap"></a>
-                                        <div class="p-6 text-center">
-                                            <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">{{ $post->category->name }}</a></p>
-                                            <h5 class="mb-0"><a class="text-dark" href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <nav class="flexbox mt-30">
-                            <a class="btn btn-white disabled"><i class="ti-arrow-left fs-9 mr-4"></i> Newer</a>
-                            <a class="btn btn-white" href="#">Older <i class="ti-arrow-right fs-9 ml-4"></i></a>
-                        </nav>
+    <!-- Start hot-deal Area -->
+    <section class="hot-deal-area section-gap">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-70 col-lg-8">
+                    <div class="title text-center">
+                        <h1 class="mb-10">This Week's Hot Deals</h1>
                     </div>
-
-                    <div class="col-md-4 col-xl-3">
-                        <div class="sidebar px-4 py-md-0">
-
-                            <h6 class="sidebar-title">Search</h6>
-                            <form class="input-group" target="#" method="GET">
-                                <input type="text" class="form-control" name="s" placeholder="Search">
-                                <div class="input-group-addon">
-                                    <span class="input-group-text"><i class="ti-search"></i></span>
-                                </div>
-                            </form>
-
-                            <hr>
-
-                            <h6 class="sidebar-title">Categories</h6>
-                            <div class="row link-color-default fs-14 lh-24">
-                                @foreach ($categories as $category)
-                                    <div class="col-6"><a href="#">{{ $category->name }}</a></div>
-                                @endforeach
-                            </div>
-
-                            <hr>
-
-                            {{-- <h6 class="sidebar-title">Top posts</h6>
-                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/4.jpg">
-                                <p class="media-body small-2 lh-4 mb-0">Thank to Maryam for joining our team</p>
-                            </a>
-
-                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/3.jpg">
-                                <p class="media-body small-2 lh-4 mb-0">Best practices for minimalist design</p>
-                            </a>
-
-                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/5.jpg">
-                                <p class="media-body small-2 lh-4 mb-0">New published books for product designers</p>
-                            </a>
-
-                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/2.jpg">
-                                <p class="media-body small-2 lh-4 mb-0">Top 5 brilliant content marketing strategies</p>
-                            </a> --}}
-
-                            <hr>
-
-                            <h6 class="sidebar-title">Tags</h6>
-                            <div class="gap-multiline-items-1">
-                                {{-- @foreach ($tags as $tag)
-                                    <a class="badge badge-secondary" href="#">{{ $tag->name }}</a>
-                                @endforeach --}}
-                            </div>
-
-                            <hr>
-
-                            <h6 class="sidebar-title">About</h6>
-                            <p class="small-3">TheSaaS is a responsive, professional, and multipurpose SaaS, Software,
-                                Startup and WebApp landing template powered by Bootstrap 4. TheSaaS is a powerful and
-                                super flexible tool for any kind of landing pages.</p>
-
+                </div>
+            </div>						
+            <div class="row justify-content-center">
+                <div class="col-lg-10 active-hot-deal-carusel">
+                    <div class="single-carusel">
+                        <div class="thumb relative">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="img-fluid" src="img/packages/hot-deal.jpg" alt="">
                         </div>
+                        <div class="price-detials">
+                            <a href="#" class="price-btn">Starting From <span>$250</span></a>
+                        </div>
+                        <div class="details">
+                            <h4 class="text-white">Ancient Architecture</h4>
+                            <p class="text-white">
+                                Cairo, Egypt
+                            </p>
+                        </div>								
                     </div>
-
+                    <div class="single-carusel">
+                        <div class="thumb relative">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="img-fluid" src="img/packages/hot-deal.jpg" alt="">
+                        </div>
+                        <div class="price-detials">
+                            <a href="#" class="price-btn">Starting From <span>$250</span></a>
+                        </div>
+                        <div class="details">
+                            <h4 class="text-white">Ancient Architecture</h4>
+                            <p class="text-white">
+                                Cairo, Egypt
+                            </p>
+                        </div>								
+                    </div>
+                    <div class="single-carusel">
+                        <div class="thumb relative">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="img-fluid" src="img/packages/hot-deal.jpg" alt="">
+                        </div>
+                        <div class="price-detials">
+                            <a href="#" class="price-btn">Starting From <span>$250</span></a>
+                        </div>
+                        <div class="details">
+                            <h4 class="text-white">Ancient Architecture</h4>
+                            <p class="text-white">
+                                Cairo, Egypt
+                            </p>
+                        </div>								
+                    </div>														
                 </div>
             </div>
-        </div>
-    </main>
+        </div>	
+    </section>
+    <!-- End hot-deal Area -->
+
+    <!-- Start destinations Area -->
+    <section class="destinations-area section-gap">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-40 col-lg-8">
+                    <div class="title text-center">
+                        <h1 class="mb-10">Popular Destinations</h1>
+                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+                    </div>
+                </div>
+            </div>						
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-destinations">
+                        <div class="thumb">
+                            <img src="img/packages/d1.jpg" alt="">
+                        </div>
+                        <div class="details">
+                            <h4>Holiday Sea beach Blue Ocean</h4>
+                            <p>
+                                United staes of America
+                            </p>
+                            <ul class="package-list">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Duration</span>
+                                    <span>06 days and 7 nights</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Date</span>
+                                    <span>18.04.2018</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Airport</span>
+                                    <span>Changi</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Extras</span>
+                                    <span>All Inclusive</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Price per person</span>
+                                    <a href="#" class="price-btn">$250</a>
+                                </li>													
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-destinations">
+                        <div class="thumb">
+                            <img src="img/packages/d6.jpg" alt="">
+                        </div>
+                        <div class="details">
+                            <h4>Holiday Sea beach Blue Ocean</h4>
+                            <p>
+                                United staes of America
+                            </p>
+                            <ul class="package-list">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Duration</span>
+                                    <span>06 days and 7 nights</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Date</span>
+                                    <span>18.04.2018</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Airport</span>
+                                    <span>Changi</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Extras</span>
+                                    <span>All Inclusive</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Price per person</span>
+                                    <a href="#" class="price-btn">$250</a>
+                                </li>													
+                            </ul>
+                        </div>
+                    </div>
+                </div>																														
+            </div>
+        </div>	
+    </section>
+    <!-- End destinations Area -->
 @endsection
