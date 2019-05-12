@@ -22,15 +22,23 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea name="description" id="description" cols="5" rows="5" class="form-control">{{ old('description') ? old('description') : (isset($post) ? $post->description : "") }}</textarea>
+                    <textarea name="description" id="description" cols="5" rows="2" class="form-control">{{ old('description') ? old('description') : (isset($post) ? $post->description : "") }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="content">Content:</label>
-                    <textarea name="content" id="content">{{ old('content') ? old('content') : (isset($post) ? $post->content : "") }}</textarea>
+                    <textarea name="content" id="content" rows="10">{{ old('content') ? old('content') : (isset($post) ? $post->content : "") }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="published_at">Published At:</label>
-                    <input type="text" name="published_at" id="published_at" class="form-control" value="{{ old('published_at') ? old('published_at') : (isset($post) ? $post->published_at : "") }}">
+                    <label for="days">Days:</label>
+                    <input type="text" name="days" id="days" class="form-control" value="{{ old('days') ? old('days') : (isset($post) ? $post->days : "") }}">
+                </div>
+                <div class="form-group">
+                    <label for="nights">Nights:</label>
+                    <input type="text" name="nights" id="nights" class="form-control" value="{{ old('nights') ? old('nights') : (isset($post) ? $post->nights : "") }}">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" name="price" id="price" class="form-control" value="{{ old('price') ? old('price') : (isset($post) ? $post->price : "") }}">
                 </div>
                 @isset($post)
                     <div class="form-group">
@@ -42,39 +50,19 @@
                     <input type="file" name="image" id="image" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="category">Category:</label>
+                    <label for="category">Type:</label>
                     <select name="category" id="category" class="form-control">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}" {{ (old('category') == $category->id) ? "selected" : (old('category') ? "" : (isset($post) ? ($category->id === $post->category_id ? "selected" : "") : "")) }}>
-                                {{ $category->name }}
+                                {{ $category->type }}
                             </option>
                         @endforeach
                     </select>
                 </div>
-                @if ($tags->count() > 0)
-                    <div class="form-group">
-                        <label for="tags">Select Tags:</label>
-                        <select name="tags[]" id="tags" class="form-control tags-multiple" multiple>
-                            @foreach ($tags as $tag)
-                                <option value="{{ $tag->id }}"
-                                    @if (old('tags') !== NULL)
-                                        @if (in_array($tag->id, old('tags')))
-                                            selected
-                                        @endif                 
-                                    @else
-                                        @isset($post)
-                                            @if ($post->hasTag($tag->id))
-                                                selected
-                                            @endif  
-                                        @endisset
-                                    @endif                                
-                                >
-                                    {{ $tag->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                @endif
+                <div class="form-group">
+                    <label for="published_at">Published At:</label>
+                    <input type="text" name="published_at" id="published_at" class="form-control" value="{{ old('published_at') ? old('published_at') : (isset($post) ? $post->published_at : "") }}">
+                </div>
                 <div class="form-group">
                     <input type="submit" value="Enter" class="btn btn-primary float-right">
                 </div>                    
