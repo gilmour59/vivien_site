@@ -19,7 +19,10 @@ class CreatePostsTable extends Migration
             $table->string('description')->nullable();
             $table->text('content');
             $table->string('image');
-            $table->unsignedSmallInteger('category_id');
+            $table->unsignedTinyInteger('category_id');
+            $table->tinyInteger('days')->unsigned();
+            $table->tinyInteger('nights')->unsigned();
+            $table->smallInteger('price')->unsigned();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

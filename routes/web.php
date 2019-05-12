@@ -23,7 +23,6 @@ Route::delete('trashed-posts/{post}', 'PostController@destroyTrash')->name('post
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('categories', 'CategoryController');
-    Route::resource('tags', 'TagController');
 });
 
 //define these routes before your call to Route::resource ; otherwise, the routes defined by the resource method may unintentionally take precedence over the supplemental routes

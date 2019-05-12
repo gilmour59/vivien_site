@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
-use App\Tag;
 use App\Http\Requests\Posts\CreatePostRequest;
 use App\Http\Requests\Posts\UpdatePostRequest;
 
@@ -14,7 +13,6 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('show');
-        $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
     }
 
     /**
@@ -34,7 +32,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create_edit')->with('categories', Category::all())->with('tags', Tag::all());
+        return view('posts.create_edit')->with('categories', Category::all());
     }
 
     /**
@@ -52,13 +50,12 @@ class PostController extends Controller
             'description' => $request->description,
             'content' => $request->content,
             'image' => $image,
+            'category_id' => $request->category,
+            'days' => $request->days,
+            'nights' => $request->nights,
+            'price' => $request->price,
             'published_at' => $request->published_at,
-            'category_id' => $request->category
         ]);
-
-        if ($request->tags) {
-            $post->tags()->attach($request->tags);
-        }
 
         session()->flash('success', 'Post successfully Added!');
 
@@ -84,7 +81,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create_edit')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
+        return view('posts.create_edit')->with('post', $post)->with('categories', Category::all());
     }
 
     /**
@@ -96,7 +93,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $data = $request->only(['title', 'description', 'content', 'published_at']);
+        $data = $request->only(['title', 'description', 'content', 'days', 'nights', 'price', 'published_at']);
 
         if($request->hasFile('image')){
             $image = $request->image->store('posts/img');
@@ -106,16 +103,6 @@ class PostController extends Controller
         }
 
         $data['category_id'] = $request->category;
-
-        if ($request->tags){
-            $post->tags()->sync($request->tags);
-        }
-
-        if(!$post->tags->isEmpty()){
-            if(!$request->tags){
-                $post->tags()->detach();
-            }
-        }
 
         $post->update($data);
 
@@ -144,7 +131,6 @@ class PostController extends Controller
         $post = Post::onlyTrashed()->where('id', $id)->firstOrFail();
 
         $post->deleteImage();
-        $post->tags()->detach();
         $post->forceDelete();
 
         session()->flash('success', 'Post successfully Deleted!');

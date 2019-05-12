@@ -10,7 +10,7 @@ class Post extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'content', 'image', 'published_at', 'category_id'];
+    protected $fillable = ['title', 'description', 'content', 'image', 'published_at', 'category_id', 'days', 'nights', 'price'];
 
     public function deleteImage(){
         Storage::delete($this->image);
@@ -18,13 +18,5 @@ class Post extends Model
 
     public function category(){
         return $this->belongsTo('App\Category');
-    }
-
-    public function tags(){
-        return $this->belongsToMany('App\Tag');
-    }
-
-    public function hasTag($tagId){
-        return in_array($tagId, $this->tags->pluck('id')->toArray());
     }
 }
