@@ -61,14 +61,18 @@ $(document).ready(function() {
 
     //------- Owl Carusel  js --------//  
 
+    var isMulti = ($('.active-hot-deal-carusel .single-carusel').length > 1) ? true : false;
+
+    console.log($('.active-hot-deal-carusel .single-carusel').length);
+    
     $('.active-hot-deal-carusel').owlCarousel({
         items:1,
-        loop:true,
-        autoplay:true,
-        autoplayHoverPause: true,        
+        loop:isMulti,
+        autoplay:isMulti,
+        autoplayHoverPause: isMulti,        
         smartSpeed:500,          
         margin:30,
-        dots: true
+        dots: isMulti
     });
 
      $('.active-testimonial').owlCarousel({

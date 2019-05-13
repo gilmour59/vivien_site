@@ -7,7 +7,7 @@
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="about-content col-lg-12">
                     <h1 class="text-white">
-                        Home				
+                        World Escapes Travel & Tours				
                     </h1>	
                 </div>	
             </div>
@@ -28,10 +28,11 @@
             </div>						
             <div class="row justify-content-center">
                 <div class="col-lg-10 active-hot-deal-carusel">
+                    <!-- foreach -->
                     <div class="single-carusel">
                         <div class="thumb relative">
                             <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="img/packages/hot-deal.jpg" alt="">
+                            <img class="img-fluid" src="{{ asset('storage/posts/img/d1.jpg') }}" alt="">
                         </div>
                         <div class="price-detials">
                             <a href="#" class="price-btn">Starting From <span>$250</span></a>
@@ -43,36 +44,7 @@
                             </p>
                         </div>								
                     </div>
-                    <div class="single-carusel">
-                        <div class="thumb relative">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="img/packages/hot-deal.jpg" alt="">
-                        </div>
-                        <div class="price-detials">
-                            <a href="#" class="price-btn">Starting From <span>$250</span></a>
-                        </div>
-                        <div class="details">
-                            <h4 class="text-white">Ancient Architecture</h4>
-                            <p class="text-white">
-                                Cairo, Egypt
-                            </p>
-                        </div>								
-                    </div>
-                    <div class="single-carusel">
-                        <div class="thumb relative">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="img/packages/hot-deal.jpg" alt="">
-                        </div>
-                        <div class="price-detials">
-                            <a href="#" class="price-btn">Starting From <span>$250</span></a>
-                        </div>
-                        <div class="details">
-                            <h4 class="text-white">Ancient Architecture</h4>
-                            <p class="text-white">
-                                Cairo, Egypt
-                            </p>
-                        </div>								
-                    </div>														
+                    <!-- foreach end-->														
                 </div>
             </div>
         </div>	
@@ -91,41 +63,7 @@
                 </div>
             </div>						
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="single-destinations">
-                        <div class="thumb">
-                            <img src="img/packages/d1.jpg" alt="">
-                        </div>
-                        <div class="details">
-                            <h4>Holiday Sea beach Blue Ocean</h4>
-                            <p>
-                                United staes of America
-                            </p>
-                            <ul class="package-list">
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <span>Duration</span>
-                                    <span>06 days and 7 nights</span>
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <span>Date</span>
-                                    <span>18.04.2018</span>
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <span>Airport</span>
-                                    <span>Changi</span>
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <span>Extras</span>
-                                    <span>All Inclusive</span>
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <span>Price per person</span>
-                                    <a href="#" class="price-btn">$250</a>
-                                </li>													
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <!-- foreach -->
                 <div class="col-lg-4">
                     <div class="single-destinations">
                         <div class="thumb">
@@ -160,7 +98,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>																														
+                </div>
+                <!-- foreach end -->																														
             </div>
         </div>	
     </section>
