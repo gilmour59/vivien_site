@@ -30,7 +30,8 @@ class PostsTableSeeder extends Seeder
             'image' => 'posts/img/d1.jpg',
             'days' => 2,
             'nights' => 1,
-            'price' => 3000
+            'price' => 3000,
+            'flight' => 1
         ]);
 
         $post2 = Post::create([
@@ -41,7 +42,8 @@ class PostsTableSeeder extends Seeder
             'image' => 'posts/img/d2.jpg',
             'days' => 3,
             'nights' => 2,
-            'price' => 4000
+            'price' => 4000,
+            'flight' => 1
         ]);
 
         $post3 = Post::create([
@@ -52,7 +54,8 @@ class PostsTableSeeder extends Seeder
             'image' => 'posts/img/d3.jpg',
             'days' => 4,
             'nights' => 3,
-            'price' => 5000
+            'price' => 5000,
+            'flight' => 0
         ]);
 
         $post4 = Post::create([
@@ -63,7 +66,8 @@ class PostsTableSeeder extends Seeder
             'image' => 'posts/img/d4.jpg',
             'days' => 3,
             'nights' => 2,
-            'price' => 6000
+            'price' => 6000,
+            'flight' => 1
         ]);
     }
 }

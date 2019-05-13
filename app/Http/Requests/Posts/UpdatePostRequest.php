@@ -28,7 +28,8 @@ class UpdatePostRequest extends FormRequest
             'image' => 'image',
             'content' => 'required',
             'published_at' => 'required',
-            'category' => 'required'
+            'category' => 'required',
+            'flight' => 'required'
         ];
     }
 }

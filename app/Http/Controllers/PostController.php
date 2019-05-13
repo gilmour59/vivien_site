@@ -54,6 +54,7 @@ class PostController extends Controller
             'days' => $request->days,
             'nights' => $request->nights,
             'price' => $request->price,
+            'flight' => $request->flight,
             'published_at' => $request->published_at,
         ]);
 
@@ -93,7 +94,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $data = $request->only(['title', 'description', 'content', 'days', 'nights', 'price', 'published_at']);
+        $data = $request->only(['title', 'description', 'content', 'days', 'nights', 'price', 'flight', 'published_at']);
 
         if($request->hasFile('image')){
             $image = $request->image->store('posts/img');

@@ -39,6 +39,19 @@
                     <label for="price">Price (Php):</label>
                     <input type="number" style="width:100px" name="price" id="price" class="form-control" value="{{ old('price') ? old('price') : (isset($post) ? $post->price : "") }}">
                 </div>
+               <div class="form-group">
+                   <label class="mr-2">Flight Included?</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="flight" id="flightYes" value="1"
+                        {{ (old('flight') === '1') ? "checked" : (old('flight') ? "" : (isset($post) ? ($post->flight === 1 ? "checked" : "") : "")) }}>
+                        <label class="form-check-label" for="flightYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="flight" id="flightNo" value="0"
+                        {{ (old('flight') === '0') ? "checked" : (old('flight') ? "" : (isset($post) ? ($post->flight === 0 ? "checked" : "") : "")) }}>
+                        <label class="form-check-label" for="flightNo">No</label>
+                    </div>
+               </div>
                 @isset($post)
                     <div class="form-group">
                         <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" style="width:100px;height:auto;">
