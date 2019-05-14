@@ -111,7 +111,7 @@
                         inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.
                     </p>
                 </div>
-                <div class="col-lg-6 col-md-12 home-about-right no-padding">
+                <div class="col-lg-6 col-md-12 home-about-left no-padding">
                     <a href="{{ route('packages.index') }}" class="primary-btn text-uppercase">All Packages</a>
                     @foreach ($categories as $category)
                         <a href="{{ route('packages.show', $category->id) }}" class="primary-btn text-uppercase">{{ $category->name }}</a>
