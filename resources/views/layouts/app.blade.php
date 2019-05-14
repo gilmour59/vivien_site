@@ -94,6 +94,9 @@
                                 <li class="list-group-item">
                                     <a href="{{ route('posts.index') }}">Posts</a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('categories.index') }}">Categories/Packages</a>
+                                </li>
                             </ul>
 
                             <ul class="list-group mt-5">

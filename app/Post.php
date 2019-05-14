@@ -19,4 +19,9 @@ class Post extends Model
     public function category(){
         return $this->belongsTo('App\Category');
     }
+
+    //call publish() in query builder
+    public function scopePublish($query){
+        return $query->where('published_at', '<=', now());
+    }
 }

@@ -15,8 +15,8 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 
 Route::prefix('packages')->group(function () {
-    Route::get('/', 'CategoryController@index')->name('categories.index');
-    Route::get('/{category}', 'CategoryController@show')->name('categories.show');
+    Route::get('/', 'PackageController@index')->name('packages.index');
+    Route::get('/{category}', 'PackageController@show')->name('packages.show');
 });
 
 Route::get('about', 'WelcomeController@about')->name('about');
@@ -32,6 +32,8 @@ Route::prefix('admin')->group(function () {
     Route::get('trashed-posts', 'PostController@trashed')->name('posts.trash');
     Route::delete('trashed-posts/{post}', 'PostController@destroyTrash')->name('posts.destroy-trash');
     Route::put('posts/{post}/hot', 'PostController@hot')->name('posts.hot');
+
+    Route::resource('categories', 'CategoryController');
 
     //define these routes before your call to Route::resource ; otherwise, the routes defined by the resource method may unintentionally take precedence over the supplemental routes
     Route::get('users/profile', 'UserController@profile')->name('users.profile');

@@ -54,11 +54,11 @@
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
                         <li><a href="{{ route('welcome') }}">Home</a></li>
-                        <li class="menu-has-children"><a href="{{ route('categories.index') }}">Packages</a>
+                        <li class="menu-has-children"><a href="{{ route('packages.index') }}">Packages</a>
                             <ul>
-                                <li><a href="{{ route('categories.index') }}">All Packages</a></li>
+                                <li><a href="{{ route('packages.index') }}">All Packages</a></li>
                                 @foreach ($categories as $category)
-                                    <li><a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a></li>
+                                    <li><a href="{{ route('packages.show', $category->id) }}">{{ $category->name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -96,7 +96,7 @@
                                 <div class="col">
                                     <ul>
                                         <li><a href="{{ route('welcome') }}">Home</a></li>
-                                        <li><a href="{{ route('categories.index') }}">Packages</a></li>
+                                        <li><a href="{{ route('packages.index') }}">Packages</a></li>
                                     </ul>
                                 </div>
                                 <div class="col">
