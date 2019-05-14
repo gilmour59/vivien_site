@@ -15,7 +15,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->enum('type', ['Domestic', 'International']);
+            $table->string('name', 100);
             $table->timestamps();
         });
     }

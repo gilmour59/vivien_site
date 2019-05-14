@@ -37,7 +37,7 @@
                                 <img class="img-fluid" src="{{ asset('storage/' . $post->image) }}" alt="">
                             </div>
                             <div class="price-detials">
-                                <a href="#" class="price-btn">Starting From <span>Php {{ $post->price }}</span></a>
+                                <a href="{{ route('posts.show', $post->id) }}" class="price-btn">Starting From <span>Php {{ $post->price }}</span></a>
                             </div>
                             <div class="details">
                                 <h4 class="text-white">{{ $post->title }}</h4>
@@ -87,7 +87,7 @@
                                     </li>
                                     <li class="d-flex justify-content-between align-items-center">
                                         <span>Price per person</span>
-                                        <a href="#" class="price-btn">Php {{ $post->price }}</a>
+                                        <a href="{{ route('posts.show', $post->id) }}" class="price-btn">Php {{ $post->price }}</a>
                                     </li>													
                                 </ul>
                             </div>
@@ -112,9 +112,10 @@
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-right no-padding">
-                    <a href="#" class="primary-btn text-uppercase">All Packages</a>
-                    <a href="#" class="primary-btn text-uppercase">Domestic Packages</a>
-                    <a href="#" class="primary-btn text-uppercase">International Packages</a>
+                    <a href="{{ route('categories.index') }}" class="primary-btn text-uppercase">All Packages</a>
+                    @foreach ($categories as $category)
+                        <a href="{{ route('categories.show', $category->id) }}" class="primary-btn text-uppercase">{{ $category->name }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>	

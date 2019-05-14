@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-lg-6 col-sm-6 col-6 header-top-right">
                             <div class="header-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/World-Escapes-Travel-and-Tours-1400216213452617/"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                             </div>
                         </div>
@@ -49,21 +49,21 @@
             <div class="container main-menu">
                 <div class="row align-items-center justify-content-between d-flex">
                     <div id="logo">
-                        <a href="index.html"><span style="color:white">World Escapes Travel & Tours</span></a>
+                        <a href="{{ route('welcome') }}"><span style="color:white">World Escapes Travel & Tours</span></a>
                     </div>
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="menu-has-children"><a href="">Packages</a>
+                        <li><a href="{{ route('welcome') }}">Home</a></li>
+                        <li class="menu-has-children"><a href="{{ route('categories.index') }}">Packages</a>
                             <ul>
-                                <li><a href="blog-home.html">All Packages</a></li>
+                                <li><a href="{{ route('categories.index') }}">All Packages</a></li>
                                 @foreach ($categories as $category)
-                                    <li><a href="blog-home.html">{{ $category->type }}</a></li>
+                                    <li><a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
-                        <li><a href="about.html">About</a></li>						          					          		          
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{ route('about') }}">About</a></li>						          					          		          
+                        <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </nav><!-- #nav-menu-container -->					      		  
                 </div>
@@ -95,14 +95,14 @@
                             <div class="row">
                                 <div class="col">
                                     <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Packages</a></li>
+                                        <li><a href="{{ route('welcome') }}">Home</a></li>
+                                        <li><a href="{{ route('categories.index') }}">Packages</a></li>
                                     </ul>
                                 </div>
                                 <div class="col">
                                     <ul>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="{{ route('about') }}">About</a></li>
+                                        <li><a href="{{ route('contact') }}">Contact</a></li>
                                     </ul>
                                 </div>										
                             </div>							
@@ -132,7 +132,7 @@
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     <div class="col-lg-4 col-sm-12 footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/World-Escapes-Travel-and-Tours-1400216213452617/"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                     </div>
                 </div>

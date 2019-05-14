@@ -14,6 +14,14 @@
 Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 
+Route::prefix('packages')->group(function () {
+    Route::get('/', 'CategoryController@index')->name('categories.index');
+    Route::get('/{category}', 'CategoryController@show')->name('categories.show');
+});
+
+Route::get('about', 'WelcomeController@about')->name('about');
+Route::get('contact', 'WelcomeController@contact')->name('contact');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
