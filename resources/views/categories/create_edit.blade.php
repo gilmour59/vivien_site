@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea name="description" id="description" cols="30" rows="5">{{ old('description') ? old('description') : (isset($category) ? $category->description : "") }}</textarea>
+                    <textarea name="description" id="description" class="form-control" cols="30" rows="5">{{ old('description') ? old('description') : (isset($category) ? $category->description : "") }}</textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Enter" class="btn btn-primary float-right">

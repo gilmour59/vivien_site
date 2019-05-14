@@ -15,11 +15,13 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         $category1 = Category::create([
-            'name' => 'Domestic Packages'
+            'name' => 'Domestic Packages',
+            'description' => 'Domestic Packages Description'
         ]);
 
         $category2 = Category::create([
-            'name' => 'International Packages'
+            'name' => 'International Packages',
+            'description' => 'International Packages Description'
         ]);
 
         $post1 = Post::create([

@@ -22,11 +22,9 @@ Route::prefix('packages')->group(function () {
 Route::get('about', 'WelcomeController@about')->name('about');
 Route::get('contact', 'WelcomeController@contact')->name('contact');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-});
-
 Route::prefix('admin')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
     Route::resource('posts', 'PostController', ['except' => ['show']]);
     Route::put('restore-posts/{post}', 'PostController@restore')->name('posts.restore');
     Route::get('trashed-posts', 'PostController@trashed')->name('posts.trash');
