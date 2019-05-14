@@ -19,53 +19,105 @@
 
 @section('content')
     <!-- Start destinations Area -->
-    @foreach ($categories as $category)
-        <section class="destinations-area section-gap">
+    @if (isset($category))
+        <section class="destinations-area" style="padding-top: 80px">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="menu-content pb-40 col-lg-8">
                         <div class="title text-center">
                             <h1 class="mb-10">{{ $category->name }}</h1>
-                            <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+                            <p>{{ $category->description }}</p>
                         </div>
                     </div>
                 </div>						
                 <div class="row">
                     @foreach ($posts as $post)
-                        <div class="col-lg-4">
-                            <div class="single-destinations">
-                                <div class="thumb">
-                                    <img src="{{ asset('storage/' . $post->image) }}" alt="">
-                                </div>
-                                <div class="details">
-                                    <h4>{{ $post->title }}</h4>
-                                    <p>{{ $post->description }}</p>
-                                    <ul class="package-list">
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Duration</span>
-                                            <span>{{ $post->days }} days and {{ $post->nights }} nights</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Flight</span>
-                                            @if ($post->flight)
-                                                <span>Flight Included</span>
-                                            @else
-                                                <span>Flight Not Included</span>
-                                            @endif
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Price per person</span>
-                                            <a href="{{ route('posts.show', $post->id) }}" class="price-btn">Php {{ $post->price }}</a>
-                                        </li>													
-                                    </ul>
+                        @if ($post->category->id === $category->id)
+                            <div class="col-lg-4">
+                                <div class="single-destinations">
+                                    <div class="thumb">
+                                        <img src="{{ asset('storage/' . $post->image) }}" alt="">
+                                    </div>
+                                    <div class="details">
+                                        <h4>{{ $post->title }}</h4>
+                                        <p>{{ $post->description }}</p>
+                                        <ul class="package-list">
+                                            <li class="d-flex justify-content-between align-items-center">
+                                                <span>Duration</span>
+                                                <span>{{ $post->days }} days and {{ $post->nights }} nights</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between align-items-center">
+                                                <span>Flight</span>
+                                                @if ($post->flight)
+                                                    <span>Flight Included</span>
+                                                @else
+                                                    <span>Flight Not Included</span>
+                                                @endif
+                                            </li>
+                                            <li class="d-flex justify-content-between align-items-center">
+                                                <span>Price per person</span>
+                                                <a href="{{ route('posts.show', $post->id) }}" class="price-btn">Php {{ $post->price }}</a>
+                                            </li>													
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif                      
                     @endforeach																														
                 </div>
             </div>	
         </section>
-    @endforeach
+    @else
+        @foreach ($categories as $category)
+            <section class="destinations-area" style="padding-top: 80px">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="menu-content pb-40 col-lg-8">
+                            <div class="title text-center">
+                                <h1 class="mb-10">{{ $category->name }}</h1>
+                                <p>{{ $category->description }}</p>
+                            </div>
+                        </div>
+                    </div>						
+                    <div class="row">
+                        @foreach ($posts as $post)
+                            @if ($post->category->id === $category->id)
+                                <div class="col-lg-4">
+                                    <div class="single-destinations">
+                                        <div class="thumb">
+                                            <img src="{{ asset('storage/' . $post->image) }}" alt="">
+                                        </div>
+                                        <div class="details">
+                                            <h4>{{ $post->title }}</h4>
+                                            <p>{{ $post->description }}</p>
+                                            <ul class="package-list">
+                                                <li class="d-flex justify-content-between align-items-center">
+                                                    <span>Duration</span>
+                                                    <span>{{ $post->days }} days and {{ $post->nights }} nights</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between align-items-center">
+                                                    <span>Flight</span>
+                                                    @if ($post->flight)
+                                                        <span>Flight Included</span>
+                                                    @else
+                                                        <span>Flight Not Included</span>
+                                                    @endif
+                                                </li>
+                                                <li class="d-flex justify-content-between align-items-center">
+                                                    <span>Price per person</span>
+                                                    <a href="{{ route('posts.show', $post->id) }}" class="price-btn">Php {{ $post->price }}</a>
+                                                </li>													
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif                      
+                        @endforeach																														
+                    </div>
+                </div>	
+            </section>
+        @endforeach
+    @endif
     <!-- End destinations Area -->
 
     <!-- Redirect to Packages Area -->

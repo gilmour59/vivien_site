@@ -10,7 +10,7 @@ class PackageController extends Controller
 {
     public function index(){
         //view all packages
-        return view('categories.index')
+        return view('packages.index')
             ->with('categories', Category::all())
             ->with('posts', Post::all())
             ->with('all', 'All Packages');
@@ -19,8 +19,9 @@ class PackageController extends Controller
     public function show(Category $category){
         $posts = Post::where('category_id', $category->id)->get();
         //view package
-        return view('categories.index')
+        return view('packages.index')
             ->with('categories', Category::all())
-            ->with('posts', $posts);
+            ->with('posts', $posts)
+            ->with('category', $category);
     }
 }
