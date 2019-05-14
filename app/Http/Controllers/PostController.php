@@ -156,4 +156,23 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    public function hot(Post $post)
+    {
+        if($post->hot === 0){
+            $post->hot = 1;
+            $post->save();
+
+            session()->flash('success', 'Post Added to Hot Section!');
+            
+            return redirect()->back();
+        }else{
+            $post->hot = 0;
+            $post->save();
+
+            session()->flash('success', 'Post Removed from Hot Section!');
+            
+            return redirect()->back();
+        }
+    }
 }

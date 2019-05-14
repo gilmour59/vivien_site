@@ -31,7 +31,8 @@ class PostsTableSeeder extends Seeder
             'days' => 2,
             'nights' => 1,
             'price' => 3000,
-            'flight' => 1
+            'flight' => 1,
+            'hot' => 1
         ]);
 
         $post2 = Post::create([
@@ -43,7 +44,8 @@ class PostsTableSeeder extends Seeder
             'days' => 3,
             'nights' => 2,
             'price' => 4000,
-            'flight' => 1
+            'flight' => 1,
+            'hot' => 0
         ]);
 
         $post3 = Post::create([

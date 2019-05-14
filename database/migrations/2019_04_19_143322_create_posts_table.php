@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->tinyInteger('nights')->unsigned();
             $table->decimal('price')->unsigned();
             $table->boolean('flight');
+            $table->boolean('hot')->default(0);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

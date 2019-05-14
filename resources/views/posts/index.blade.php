@@ -20,6 +20,8 @@
                         <th>Title</th>
                         <th>Category</th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
@@ -33,16 +35,35 @@
                                 <td width="20%">
                                     {{ $post->category->name }}
                                 </td>
-                                <td width="20%">
+                                <td>
+                                    @if (!$post->trashed())
+                                        @if ($post->hot === 0)
+                                            <form action="{{ route('posts.hot', $post->id) }}" method="POST" id="hotForm">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="submit" class="btn btn-success btn-sm mr-2" value="Hot">
+                                            </form>
+                                        @else
+                                            <form action="{{ route('posts.hot', $post->id) }}" method="POST" id="hotForm">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="submit" class="btn btn-warning btn-sm mr-2" value="Not Hot">
+                                            </form>
+                                        @endif
+                                    @endif
+                                </td>
+                                <td>
                                     @if ($post->trashed())
                                         <form action="{{ route('posts.restore', $post->id) }}" method="POST" id="restoreForm">
                                             @csrf
                                             @method('PUT')
                                         </form>
-                                        <button type="submit" form="restoreForm" class="btn btn-info btn-sm mr-3">Restore</button>
-                                    @else
-                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info btn-sm mr-3">Edit</a>
+                                        <button type="submit" form="restoreForm" class="btn btn-info btn-sm mr-2">Restore</button>
+                                    @else                                       
+                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info btn-sm mr-2">Edit</a>
                                     @endif
+                                </td>
+                                <td>
                                     <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $post->id }}, {{ $post->trashed() }})">
                                         {{ $post->trashed() ? 'Delete' : 'Trash'}}
                                     </button>
