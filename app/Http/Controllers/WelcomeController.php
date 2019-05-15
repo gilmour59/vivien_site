@@ -10,7 +10,17 @@ class WelcomeController extends Controller
 {
     public function index(){
         return view('welcome')
-        ->with('posts', Post::all())
-        ->with('categories', Category::all());
+            ->with('posts', Post::all())
+            ->with('categories', Category::all());
+    }
+
+    public function about(){
+            return view('about')
+            ->with('categories', Category::all());
+    }
+
+    public function contact(){
+            return view('contact')
+            ->with('categories', Category::all());
     }
 }

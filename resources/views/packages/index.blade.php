@@ -7,10 +7,16 @@
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="about-content col-lg-12">
                     <h1 class="text-white">
-                        @isset($all)
-                            {{ $all }}
-                        @endisset				
-                    </h1>	
+                        @if(isset($all))
+                                {{ $all }}
+                            </h1>
+                            <p class="text-white link-nav"><a href="{{ route('welcome') }}">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="{{ route('packages.index') }}">All Packages </a></p>
+                        @else
+                                {{ $category->name }}
+                            </h1>
+                            <p class="text-white link-nav"><a href="{{ route('welcome') }}">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="{{ route('packages.index') }}">Packages </a> <span class="lnr lnr-arrow-right"></span> <a href="{{ route('packages.show', $category->id) }}">{{ $category->name }} </a></p>
+                        @endif	 
+                    <!-- </h1> -->                   	
                 </div>	
             </div>
         </div>
