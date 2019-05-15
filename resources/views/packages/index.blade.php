@@ -133,9 +133,9 @@
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-left no-padding">
-                    <a href="{{ route('categories.index') }}" class="primary-btn text-uppercase">All Packages</a>
+                    <a href="{{ route('packages.index') }}" class="primary-btn text-uppercase">All Packages</a>
                     @foreach ($categories as $category)
-                        <a href="{{ route('categories.show', $category->id) }}" class="primary-btn text-uppercase">{{ $category->name }}</a>
+                        <a href="{{ route('packages.show', $category->id) }}" class="primary-btn text-uppercase">{{ $category->name }}</a>
                     @endforeach
                 </div>
             </div>
