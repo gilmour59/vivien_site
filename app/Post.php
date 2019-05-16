@@ -12,6 +12,13 @@ class Post extends Model
 
     protected $fillable = ['title', 'description', 'content', 'image', 'published_at', 'category_id', 'days', 'nights', 'price', 'flight'];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['published_at'];
+
     public function deleteImage(){
         Storage::delete($this->image);
     }
