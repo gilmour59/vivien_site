@@ -23,10 +23,4 @@ class PackageController extends Controller
             ->with('posts', $category->posts()->search())
             ->with('category', $category);
     }
-
-    public function searchAll(){
-        return view('packages.search')
-            ->with('categories', Category::all())
-            ->with('posts', Post::search());
-    }
 }
