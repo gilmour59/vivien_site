@@ -34,7 +34,8 @@ class PostsTableSeeder extends Seeder
             'nights' => 1,
             'price' => 3000,
             'flight' => 1,
-            'hot' => 1
+            'hot' => 1,
+            'published_at' => '2019-05-16'
         ]);
 
         $post2 = Post::create([
@@ -47,7 +48,8 @@ class PostsTableSeeder extends Seeder
             'nights' => 2,
             'price' => 4000,
             'flight' => 1,
-            'hot' => 0
+            'hot' => 0,
+            'published_at' => '2019-05-15'
         ]);
 
         $post3 = Post::create([
@@ -59,7 +61,8 @@ class PostsTableSeeder extends Seeder
             'days' => 4,
             'nights' => 3,
             'price' => 5000,
-            'flight' => 0
+            'flight' => 0,
+            'published_at' => '2019-05-14'
         ]);
 
         $post4 = Post::create([
@@ -71,7 +74,8 @@ class PostsTableSeeder extends Seeder
             'days' => 3,
             'nights' => 2,
             'price' => 6000,
-            'flight' => 1
+            'flight' => 1,
+            'published_at' => '2019-05-13'
         ]);
     }
 }
