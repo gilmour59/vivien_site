@@ -53,17 +53,17 @@
                     </div>
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
-                        <li><a href="{{ route('welcome') }}">Home</a></li>
-                        <li class="menu-has-children"><a href="{{ route('packages.index') }}">Packages</a>
-                            <ul>
-                                <li><a href="{{ route('packages.index') }}">All Packages</a></li>
-                                @foreach ($categories as $category)
-                                    <li><a href="{{ route('packages.show', $category->id) }}">{{ $category->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li><a href="{{ route('about') }}">About</a></li>						          					          		          
-                        <li><a href="{{ route('contact') }}">Contact</a></li>
+                            <li><a href="{{ route('welcome') }}">Home</a></li>
+                            <li class="menu-has-children"><a href="{{ route('packages.index') }}">Packages</a>
+                                <ul>
+                                    <li><a href="{{ route('packages.index') }}">All Packages</a></li>
+                                    @foreach ($categories as $category)
+                                        <li><a href="{{ route('packages.show', $category->id) }}">{{ $category->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li><a href="{{ route('about') }}">About</a></li>						          					          		          
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </nav><!-- #nav-menu-container -->					      		  
                 </div>

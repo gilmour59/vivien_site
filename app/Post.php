@@ -24,4 +24,22 @@ class Post extends Model
     public function scopePublish($query){
         return $query->where('published_at', '<=', now());
     }
+
+    //call search() in query builder
+    public function scopeSearch($query){
+
+        $search = request()->query('search');
+
+        if($search) {
+            return $query->where('title', 'like', '%'. $search .'%')
+                ->orWhere('content', 'like', '%'. $search .'%')
+                ->publish()
+                ->orderBy('published_at', 'desc')
+                ->simplePaginate(10);
+        }else{
+            return $query->publish()
+                ->orderBy('published_at', 'desc')
+                ->simplePaginate(10);
+        }
+    }
 }
