@@ -45,7 +45,7 @@
                     </div>
                 </div>						
                 <div class="row">
-                    @if (!array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())))
+                    @if ($posts->count() === 0)
                         @if (request()->query('search'))
                             <span>No Results found for <strong> {{ request()->query('search') }}</strong> in {{ $category->name }}</span>
                         @else
@@ -103,22 +103,23 @@
                             </div>
                         </div>
                     @endif
-                    <div class="row d-flex justify-content-center">
-                        <div class="menu-content pb-40 col-lg-8">
-                            <div class="title text-center">
-                                <h1 class="mb-10">{{ $category->name }}</h1>
-                                <p>{{ $category->description }}</p>
+                    <!-- !array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())) -->
+                    @if (!array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())))
+                        @if (request()->query('search') && ($posts->count() === 0))
+                            <span>No Results found for <strong> {{ request()->query('search') }}</strong> in {{ $category->name }}</span>
+                        @elseif ($posts->count() === 0)
+                            <span>No posts yet! Sorry.</span>
+                        @endif                                
+                    @else
+                        <div class="row d-flex justify-content-center">
+                            <div class="menu-content pb-40 col-lg-8">
+                                <div class="title text-center">
+                                    <h1 class="mb-10">{{ $category->name }}</h1>
+                                    <p>{{ $category->description }}</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>						
-                    <div class="row">
-                        @if (!array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())))
-                            @if (request()->query('search'))
-                                <span>No Results found for <strong> {{ request()->query('search') }}</strong> in {{ $category->name }}</span>
-                            @else
-                                <span>No posts yet! Sorry.</span>
-                            @endif                                
-                        @else
+                        </div>						
+                        <div class="row">
                             @foreach ($posts as $post)
                                 @if ($post->category->id === $category->id)
                                     <div class="col-lg-4">
@@ -151,9 +152,9 @@
                                         </div>
                                     </div>
                                 @endif                      
-                            @endforeach
-                        @endif																														
-                    </div>
+                            @endforeach																														
+                        </div>
+                    @endif
                 </div>	
             </section>
         @endforeach
