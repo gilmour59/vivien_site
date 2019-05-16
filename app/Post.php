@@ -49,4 +49,10 @@ class Post extends Model
                 ->simplePaginate(10);
         }
     }
+
+    //call hot() in query builder
+    public function scopeHot($query){
+        return $query->where('hot', 1)
+            ->search();
+    }
 }

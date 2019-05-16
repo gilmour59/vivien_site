@@ -12,16 +12,21 @@ class PackageController extends Controller
         //view all packages
         return view('packages.index')
             ->with('categories', Category::all())
-            ->with('posts', Post::all())
+            ->with('posts', Post::search())
             ->with('all', 'All Packages');
     }
 
     public function show(Category $category){
-        $posts = Post::where('category_id', $category->id)->get();
         //view package
         return view('packages.index')
             ->with('categories', Category::all())
-            ->with('posts', $posts)
+            ->with('posts', $category->posts()->search())
             ->with('category', $category);
+    }
+
+    public function searchAll(){
+        return view('packages.search')
+            ->with('categories', Category::all())
+            ->with('posts', Post::search());
     }
 }
