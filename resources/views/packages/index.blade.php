@@ -26,7 +26,7 @@
 @section('content')
     <!-- Start destinations Area -->
     @if (isset($category))
-        <section class="destinations-area" style="padding-top: 80px">
+        <section class="destinations-area section-gap" style="padding-top: 80px">
             <div class="container">
                 <div class="search row mb-5">
                     <div class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-3 offset-5 offset-sm-7 offset-md-8 offset-lg-9 offset-xl-9">
@@ -45,7 +45,7 @@
                     </div>
                 </div>						
                 <div class="row">
-                    @if ($posts->count() === 0)
+                    @if (!array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())))
                         @if (request()->query('search'))
                             <span>No Results found for <strong> {{ request()->query('search') }}</strong> in {{ $category->name }}</span>
                         @else
@@ -91,7 +91,7 @@
         </section>
     @else
         @foreach ($categories as $key => $category)
-            <section class="destinations-area" style="padding-top: 80px">
+            <section class="destinations-area section-gap" style="padding-top: 80px">
                 <div class="container">
                     @if ($key === 0)
                         <div class="search row mb-5">
@@ -112,7 +112,7 @@
                         </div>
                     </div>						
                     <div class="row">
-                        @if ($posts->count() === 0)
+                        @if (!array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())))
                             @if (request()->query('search'))
                                 <span>No Results found for <strong> {{ request()->query('search') }}</strong> in {{ $category->name }}</span>
                             @else
