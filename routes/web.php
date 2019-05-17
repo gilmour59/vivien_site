@@ -24,7 +24,7 @@ Route::get('contact', 'WelcomeController@contact')->name('contact');
 Route::post('contact', 'WelcomeController@email')->name('contact.email');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+    Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
 
     Route::resource('posts', 'PostController', ['except' => ['show']]);
     Route::put('restore-posts/{post}', 'PostController@restore')->name('posts.restore');
@@ -34,11 +34,8 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('categories', 'CategoryController');
 
-    //define these routes before your call to Route::resource ; otherwise, the routes defined by the resource method may unintentionally take precedence over the supplemental routes
-    Route::get('users/profile', 'UserController@profile')->name('users.profile');
-    Route::put('users/profile', 'UserController@updateProfile')->name('users.update-profile');
     //resource should be called after the supplementary routes of "users"
-    Route::resource('admin/users', 'UserController');
+    Route::resource('users', 'UserController');
 
     Auth::routes(['register' => false]);
 });

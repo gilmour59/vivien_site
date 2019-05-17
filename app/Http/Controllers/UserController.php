@@ -79,28 +79,4 @@ class UserController extends Controller
             return redirect(route('users.index'));
         }
     }
-
-    public function profile(){
-        return view('users.profile')->with('user', auth()->user());
-    }
-    
-    public function updateProfile(UpdateProfileRequest $request){
-        $user = auth()->user();
-
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'about' => $request->about
-        ]);
-
-        if ($request->password) {
-            $user->password = Hash::make($request->password);
-
-            $user->save();
-        }
-
-        session()->flash('success', 'Profile Updated!');
-
-        return redirect()->back();
-    }
 }
