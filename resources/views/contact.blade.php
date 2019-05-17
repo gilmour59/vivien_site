@@ -78,3 +78,18 @@
     </section>
     <!-- End contact-page Area -->
 @endsection
+
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        @if(session()->has('success'))
+            toastr.success("{{ Session::get('success') }}");
+        @elseif(session()->has('error'))
+            toastr.error("{{ Session::get('error') }}");
+        @endif
+    </script>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+@endsection
