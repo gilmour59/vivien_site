@@ -21,6 +21,7 @@ Route::prefix('packages')->group(function () {
 
 Route::get('about', 'WelcomeController@about')->name('about');
 Route::get('contact', 'WelcomeController@contact')->name('contact');
+Route::post('contact', 'WelcomeController@email')->name('contact.email');
 
 Route::prefix('admin')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

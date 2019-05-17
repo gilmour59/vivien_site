@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Mail\ContactUs;
+use Illuminate\Support\Facades\Mail;
 
 class WelcomeController extends Controller
 {
@@ -22,5 +24,9 @@ class WelcomeController extends Controller
     public function contact(){
         return view('contact')
             ->with('categories', Category::all());
+    }
+
+    public function email(Request $request){
+        Mail::to('gilmouralmalbisdev@gmail.com')->send(new ContactUs($request->all()));
     }
 }
