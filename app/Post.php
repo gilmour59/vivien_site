@@ -42,11 +42,11 @@ class Post extends Model
                 ->orWhere('content', 'like', '%'. $search .'%')
                 ->publish()
                 ->orderBy('published_at', 'desc')
-                ->simplePaginate(10);
+                ->simplePaginate(6);
         }else{
             return $query->publish()
                 ->orderBy('published_at', 'desc')
-                ->simplePaginate(10);
+                ->simplePaginate(6);
         }
     }
 

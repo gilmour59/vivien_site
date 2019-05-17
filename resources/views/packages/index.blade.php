@@ -35,14 +35,6 @@
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
-                </div>
-                <div class="row d-flex justify-content-center">
-                    <div class="menu-content pb-40 col-lg-8">
-                        <div class="title text-center">
-                            <h1 class="mb-10">{{ $category->name }}</h1>
-                            <p>{{ $category->description }}</p>
-                        </div>
-                    </div>
                 </div>						
                 <div class="row">
                     @if ($posts->count() === 0)
@@ -87,9 +79,11 @@
                         @endforeach
                     @endif																														
                 </div>
+                {{ $posts->appends(['search' => request()->query('search')])->links() }}
             </div>	
         </section>
     @else        
+        <!-- !array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())) -->
         <section class="destinations-area section-gap" style="padding-top: 80px">
             <div class="container">
                 <div class="search row mb-5">
@@ -99,63 +93,49 @@
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
-                </div>
-                @if ($posts->count() === 0)
-                    @if (request()->query('search'))
-                        <span>No Results found for <strong> {{ request()->query('search') }}</strong></span>
+                </div>					
+                <div class="row">
+                    @if ($posts->count() === 0)
+                        @if (request()->query('search'))
+                            <span>No Results found for <strong> {{ request()->query('search') }}</strong></span>
+                        @else
+                            <span>No posts yet! Sorry.</span>
+                        @endif                                
                     @else
-                        <span>No posts yet! Sorry.</span>
-                    @endif                                
-                @else  
-                    @foreach ($categories as $key => $category)
-                        <!-- !array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())) -->
-                        @if (array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())))
-                            <div class="row d-flex justify-content-center">
-                                <div class="menu-content pb-40 col-lg-8">
-                                    <div class="title text-center">
-                                        <h1 class="mb-10">{{ $category->name }}</h1>
-                                        <p>{{ $category->description }}</p>
+                        @foreach ($posts as $post)
+                            <div class="col-lg-4">
+                                <div class="single-destinations">
+                                    <div class="thumb">
+                                        <img src="{{ asset('storage/' . $post->image) }}" alt="">
+                                    </div>
+                                    <div class="details">
+                                        <h4>{{ $post->title }}</h4>
+                                        <p>{{ $post->description }}</p>
+                                        <ul class="package-list">
+                                            <li class="d-flex justify-content-between align-items-center">
+                                                <span>Duration</span>
+                                                <span>{{ $post->days }} days and {{ $post->nights }} nights</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between align-items-center">
+                                                <span>Flight</span>
+                                                @if ($post->flight)
+                                                    <span>Flight Included</span>
+                                                @else
+                                                    <span>Flight Not Included</span>
+                                                @endif
+                                            </li>
+                                            <li class="d-flex justify-content-between align-items-center">
+                                                <span>Price per person</span>
+                                                <a href="{{ route('posts.show', $post->id) }}" class="price-btn">Php {{ $post->price }}</a>
+                                            </li>													
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>						
-                            <div class="row">
-                                @foreach ($posts as $post)
-                                    @if ($post->category->id === $category->id)
-                                        <div class="col-lg-4">
-                                            <div class="single-destinations">
-                                                <div class="thumb">
-                                                    <img src="{{ asset('storage/' . $post->image) }}" alt="">
-                                                </div>
-                                                <div class="details">
-                                                    <h4>{{ $post->title }}</h4>
-                                                    <p>{{ $post->description }}</p>
-                                                    <ul class="package-list">
-                                                        <li class="d-flex justify-content-between align-items-center">
-                                                            <span>Duration</span>
-                                                            <span>{{ $post->days }} days and {{ $post->nights }} nights</span>
-                                                        </li>
-                                                        <li class="d-flex justify-content-between align-items-center">
-                                                            <span>Flight</span>
-                                                            @if ($post->flight)
-                                                                <span>Flight Included</span>
-                                                            @else
-                                                                <span>Flight Not Included</span>
-                                                            @endif
-                                                        </li>
-                                                        <li class="d-flex justify-content-between align-items-center">
-                                                            <span>Price per person</span>
-                                                            <a href="{{ route('posts.show', $post->id) }}" class="price-btn">Php {{ $post->price }}</a>
-                                                        </li>													
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif                      
-                                @endforeach																														
-                            </div>
-                        @endif
-                    @endforeach
-                @endif
+                            </div>                     
+                        @endforeach
+                    @endif																														
+                </div>
+                {{ $posts->appends(['search' => request()->query('search')])->links() }}
             </div>	
         </section>
     @endif
