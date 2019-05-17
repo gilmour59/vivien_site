@@ -26,7 +26,7 @@
 @section('content')
     <!-- Start destinations Area -->
     @if (isset($category))
-        <section class="destinations-area section-gap" style="padding-top: 80px">
+        <section class="destinations-area" style="padding-top: 80px; padding-bottom: 0px">
             <div class="container">
                 <div class="search row mb-5">
                     <div class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-3 offset-5 offset-sm-7 offset-md-8 offset-lg-9 offset-xl-9">
@@ -84,7 +84,7 @@
         </section>
     @else        
         <!-- !array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())) -->
-        <section class="destinations-area section-gap" style="padding-top: 80px">
+        <section class="destinations-area" style="padding-top: 80px; padding-bottom: 0px">
             <div class="container">
                 <div class="search row mb-5">
                     <div class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-3 offset-5 offset-sm-7 offset-md-8 offset-lg-9 offset-xl-9">
@@ -154,9 +154,15 @@
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-left no-padding">
-                    <a href="{{ route('packages.index') }}" class="primary-btn text-uppercase">All Packages</a>
-                    @foreach ($categories as $category)
-                        <a href="{{ route('packages.show', $category->id) }}" class="primary-btn text-uppercase">{{ $category->name }}</a>
+                    @if(!isset($all))
+                        <a href="{{ route('packages.index') }}" class="primary-btn text-uppercase">All Packages</a>
+                    @endif                        
+                    @foreach ($categories as $category_link)
+                        @if(isset($category) && (!($category->id === $category_link->id)))
+                            <a href="{{ route('packages.show', $category_link->id) }}" class="primary-btn text-uppercase">{{ $category_link->name }}</a>
+                        @elseif(isset($all))
+                            <a href="{{ route('packages.show', $category_link->id) }}" class="primary-btn text-uppercase">{{ $category_link->name }}</a>
+                        @endif                        
                     @endforeach
                 </div>
             </div>
