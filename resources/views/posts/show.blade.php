@@ -18,7 +18,11 @@
 
 @section('content')
     <section class="post-content-area single-post-area">
-        <div class="container">
+        <div class="container">     
+                   
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div class="addthis_inline_share_toolbox"></div>       
+
             <div class="search row mb-5">
                 <div class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-3 offset-5 offset-sm-7 offset-md-8 offset-lg-9 offset-xl-9">
                     <form class="search-form" method="GET" action="{{ route('packages.index') }}">
@@ -62,4 +66,9 @@
             </div>            
         </div>	                                             				
     </section>
+@endsection
+
+@section('js')
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cde2c26043b58ae"></script>
 @endsection

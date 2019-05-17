@@ -152,6 +152,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>					
         <script src="{{ asset('js/owl.carousel.min.js') }}"></script>							
         <script src="{{ asset('js/mail-script.js') }}"></script>	
-        <script src="{{ asset('js/main.js') }}"></script>	
+        <script src="{{ asset('js/main.js') }}"></script>
+        @yield('js')	
     </body>
 </html>
