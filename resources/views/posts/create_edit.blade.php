@@ -84,13 +84,13 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.2.44/jodit.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css"/>
 @endsection
 
 @section('scripts')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.2.44/jodit.min.js"></script>
     <script>
         $('#content').each(function () {
             var editor = new Jodit(this, {
