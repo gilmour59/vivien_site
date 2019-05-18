@@ -47,7 +47,7 @@
                             <span class="lnr lnr-envelope"></span>
                         </div>
                         <div class="contact-details">
-                            <h5>vivien@worldescapes.info</h5>
+                            <h5>vivien.c.cuadra@gmail.com</h5>
                             <p>Send us your inquiry anytime!</p>
                         </div>
                     </div>														

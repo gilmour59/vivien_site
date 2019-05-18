@@ -27,7 +27,7 @@ class WelcomeController extends Controller
     }
 
     public function email(Request $request){
-        Mail::to('gilmouralmalbisdev@gmail.com')->send(new ContactUs($request->all()));
+        Mail::to('vivien.c.cuadra@gmail.com')->send(new ContactUs($request->all()));
 
         session()->flash('success', 'Info Successfully Sent!');
 
