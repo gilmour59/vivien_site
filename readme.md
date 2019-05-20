@@ -7,3 +7,5 @@
 1. ln -s vivien_site/storage storage
 2. make changes to public_html/index.php
 3. make changes to .env if needed
+
+n19pd0utk1tm
