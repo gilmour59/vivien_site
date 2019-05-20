@@ -26,7 +26,7 @@
 @section('content')
     <!-- Start destinations Area -->
     @if (isset($category))
-        <section class="destinations-area" style="padding-top: 80px; padding-bottom: 0px">
+        <section class="destinations-area" style="padding-top: 80px; padding-bottom: 40px">
             <div class="container">
                 <div class="search row mb-5">
                     <div class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-3 offset-5 offset-sm-7 offset-md-8 offset-lg-9 offset-xl-9">
@@ -84,7 +84,7 @@
         </section>
     @else        
         <!-- !array_key_exists($category->id, array_count_values($posts->pluck('category_id')->toArray())) -->
-        <section class="destinations-area" style="padding-top: 80px; padding-bottom: 0px">
+        <section class="destinations-area" style="padding-top: 80px; padding-bottom: 40px">
             <div class="container">
                 <div class="search row mb-5">
                     <div class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-3 offset-5 offset-sm-7 offset-md-8 offset-lg-9 offset-xl-9">
@@ -150,7 +150,7 @@
                         Did not find your Package?
                     </h1>
                     <p>
-                        inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.
+                        Choose the Package that fits your needs:
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-left no-padding">

@@ -31,7 +31,7 @@
                 <div class="menu-content pb-70 col-lg-8">
                     <div class="title text-center">
                         <h1 class="mb-10">This Week's Hot Deals</h1>
-                        <p>Something Something</p>
+                        <p>Get 'em While They're Hot</p>
                     </div>
                 </div>
             </div>						
@@ -66,7 +66,7 @@
                 <div class="menu-content pb-40 col-lg-8">
                     <div class="title text-center">
                         <h1 class="mb-10">Popular Destinations</h1>
-                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+                        <p>Explore and Enjoy this Season!</p>
                     </div>
                 </div>
             </div>						
@@ -116,7 +116,7 @@
                         Did not find your Package?
                     </h1>
                     <p>
-                        inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.
+                        Choose the Package that fits your needs:
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-left no-padding">

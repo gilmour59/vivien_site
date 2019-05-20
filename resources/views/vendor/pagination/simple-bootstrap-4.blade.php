@@ -25,7 +25,7 @@
 @endif --}}
 
 @if ($paginator->hasPages())
-    <nav class="blog-pagination justify-content-center d-flex">
+    <nav class="blog-pagination justify-content-center d-flex" style="padding-bottom: 40px">
         <ul class="pagination" role="navigation">
             
             <!-- Previous Page Link -->

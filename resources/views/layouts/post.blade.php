@@ -118,9 +118,9 @@
                 <div class="row">
                     <div class="col-lg-6  col-md-6 col-sm-6">
                         <div class="single-footer-widget">
-                            <h6>About Agency</h6>
+                            <h6>About</h6>
                             <p>
-                                The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point 
+                                We are a group of people who are well-versed in the fun and rigors of traveling. Our travel agency came together to help other people plan and book their dream vacations from their hard earned jobs and travel savings. Our vision is to make your dream travel destination come true! We in World Escapes brings your closer to the world!
                             </p>
                         </div>
                     </div>
