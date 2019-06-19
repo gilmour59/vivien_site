@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Price (Php):</label>
-                    <input type="number" style="width:100px" name="price" id="price" class="form-control" value="{{ old('price') ? old('price') : (isset($post) ? $post->price : "") }}">
+                    <input type="number" step="any" style="width:100px" name="price" id="price" class="form-control" value="{{ old('price') ? old('price') : (isset($post) ? $post->price : "") }}">
                 </div>
                <div class="form-group">
                    <label class="mr-2">Flight Included?</label>
