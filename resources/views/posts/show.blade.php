@@ -33,7 +33,7 @@
             </div>
             <div class="row">
                 <div class="single-post">                
-                    {{ $post->content }}
+                    {!! $post->content !!}
                 </div>
             </div>
         </div>	
